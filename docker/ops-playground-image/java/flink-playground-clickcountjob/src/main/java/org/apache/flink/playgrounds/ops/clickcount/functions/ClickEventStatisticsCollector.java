@@ -22,6 +22,7 @@ import org.apache.flink.playgrounds.ops.clickcount.records.ClickEventStatistics;
 import org.apache.flink.streaming.api.functions.windowing.ProcessWindowFunction;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
+import org.slf4j.Logger;
 
 import java.util.Date;
 
@@ -33,13 +34,14 @@ import java.util.Date;
 public class ClickEventStatisticsCollector
 		extends ProcessWindowFunction<Long, ClickEventStatistics, String, TimeWindow> {
 
+	Logger logger = org.slf4j.LoggerFactory.getLogger(ClickEventStatisticsCollector.class);
 	@Override
 	public void process(
 			final String page,
 			final Context context,
 			final Iterable<Long> elements,
 			final Collector<ClickEventStatistics> out) throws Exception {
-
+		logger.info("Processing window for page {} from {} to {}", page, new Date(context.window().getStart()), new Date(context.window().getEnd()));
 		Long count = elements.iterator().next();
 
 		out.collect(new ClickEventStatistics(new Date(context.window().getStart()), new Date(context.window().getEnd()), page, count));

@@ -23,6 +23,7 @@ import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.core.JsonProcessin
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.slf4j.Logger;
 
 import javax.annotation.Nullable;
 
@@ -32,6 +33,7 @@ import javax.annotation.Nullable;
  */
 public class ClickEventSerializationSchema implements KafkaSerializationSchema<ClickEvent> {
 
+	private Logger logger = org.slf4j.LoggerFactory.getLogger(ClickEventSerializationSchema.class);
 	private static final ObjectMapper objectMapper = new ObjectMapper();
 	private String topic;
 
@@ -47,6 +49,7 @@ public class ClickEventSerializationSchema implements KafkaSerializationSchema<C
 			final ClickEvent message, @Nullable final Long timestamp) {
 		try {
 			//if topic is null, default topic will be used
+			logger.info("Serializing message {} to topic {}", message, topic);
 			return new ProducerRecord<>(topic, objectMapper.writeValueAsBytes(message));
 		} catch (JsonProcessingException e) {
 			throw new IllegalArgumentException("Could not serialize record: " + message, e);

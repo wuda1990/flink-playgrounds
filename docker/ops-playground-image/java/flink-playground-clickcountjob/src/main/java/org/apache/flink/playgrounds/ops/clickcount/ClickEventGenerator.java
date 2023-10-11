@@ -26,6 +26,8 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.ByteArraySerializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -54,6 +56,8 @@ public class ClickEventGenerator {
 	//this calculation is only accurate as long as pages.size() * EVENTS_PER_WINDOW divides the
 	//window size
 	public static final long DELAY = WINDOW_SIZE.toMilliseconds() / pages.size() / EVENTS_PER_WINDOW;
+
+	private Logger logger = LoggerFactory.getLogger(ClickEventGenerator.class);
 
 	public static void main(String[] args) throws Exception {
 
