@@ -86,9 +86,11 @@ public class SpendReportTest {
     
     private static List<Row> materialize(TableResult results) {
         try (CloseableIterator<Row> resultIterator = results.collect()) {
-            return StreamSupport
-                    .stream(Spliterators.spliteratorUnknownSize(resultIterator, Spliterator.ORDERED), false)
-                    .collect(Collectors.toList());
+            final List<Row> collect = StreamSupport
+                .stream(Spliterators.spliteratorUnknownSize(resultIterator, Spliterator.ORDERED), false)
+                .collect(Collectors.toList());
+            System.out.println(collect);
+            return collect;
         } catch (Exception e) {
             throw new RuntimeException("Failed to materialize results", e);
         }

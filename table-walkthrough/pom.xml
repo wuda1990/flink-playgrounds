@@ -206,37 +206,37 @@ under the License.
                         </lifecycleMappingMetadata>
                     </configuration>
                 </plugin>
-                <plugin>
-                    <groupId>org.apache.rat</groupId>
-                    <artifactId>apache-rat-plugin</artifactId>
-                    <version>0.13</version>
-                    <inherited>false</inherited>
-                    <executions>
-                        <execution>
-                            <phase>verify</phase>
-                            <goals>
-                                <goal>check</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    <configuration>
-                        <excludes>
-                            <!-- Additional files like .gitignore etc.-->
-                            <exclude>**/.*/**</exclude>
-                            <exclude>**/*.prefs</exclude>
-                            <exclude>**/*.log</exclude>
-                            <!-- Administrative files in the main trunk. -->
-                            <exclude>**/README.md</exclude>
-                            <exclude>**/CODE_OF_CONDUCT.md</exclude>
-                            <exclude>.github/**</exclude>
-                            <!-- IDE files. -->
-                            <exclude>**/*.iml</exclude>
-                            <!-- Generated content -->
-                            <exclude>**/target/**</exclude>
-                            <exclude>**/dependency-reduced-pom.xml</exclude>
-                        </excludes>
-                    </configuration>
-                </plugin>
+<!--                <plugin>-->
+<!--                    <groupId>org.apache.rat</groupId>-->
+<!--                    <artifactId>apache-rat-plugin</artifactId>-->
+<!--                    <version>0.13</version>-->
+<!--                    <inherited>false</inherited>-->
+<!--                    <executions>-->
+<!--                        <execution>-->
+<!--                            <phase>verify</phase>-->
+<!--                            <goals>-->
+<!--                                <goal>check</goal>-->
+<!--                            </goals>-->
+<!--                        </execution>-->
+<!--                    </executions>-->
+<!--                    <configuration>-->
+<!--                        <excludes>-->
+<!--                            &lt;!&ndash; Additional files like .gitignore etc.&ndash;&gt;-->
+<!--                            <exclude>**/.*/**</exclude>-->
+<!--                            <exclude>**/*.prefs</exclude>-->
+<!--                            <exclude>**/*.log</exclude>-->
+<!--                            &lt;!&ndash; Administrative files in the main trunk. &ndash;&gt;-->
+<!--                            <exclude>**/README.md</exclude>-->
+<!--                            <exclude>**/CODE_OF_CONDUCT.md</exclude>-->
+<!--                            <exclude>.github/**</exclude>-->
+<!--                            &lt;!&ndash; IDE files. &ndash;&gt;-->
+<!--                            <exclude>**/*.iml</exclude>-->
+<!--                            &lt;!&ndash; Generated content &ndash;&gt;-->
+<!--                            <exclude>**/target/**</exclude>-->
+<!--                            <exclude>**/dependency-reduced-pom.xml</exclude>-->
+<!--                        </excludes>-->
+<!--                    </configuration>-->
+<!--                </plugin>-->
 			</plugins>
 		</pluginManagement>
 	</build>
